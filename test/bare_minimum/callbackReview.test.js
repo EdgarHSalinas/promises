@@ -43,6 +43,7 @@ describe('Callback review', function() {
     // Since no actual requests is ever sent, our tests run faster
     // and we preserve our API rate limits.
     var google = nock('https://google.com');
+    console.log('google _____________ ' + google);
     var someNonExistantWebsite = nock('https::///thisIsNoUrl.comedy');
 
     it('should accept a callback as its last argument', function(done) {
@@ -61,6 +62,7 @@ describe('Callback review', function() {
 
       getStatusCode('https::///thisIsNoUrl.comedy', function(err, statusCode) {
         expect(err.message).to.contain('Invalid URI');
+        console.log('err message' + err.message);
         expect(statusCode).to.not.exist;
         done();
       });
